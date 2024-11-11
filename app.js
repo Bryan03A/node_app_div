@@ -10,4 +10,6 @@ app.post('/calculate', (req, res) => {
   res.json({ result });
 });
 
-app.listen(6004, () => console.log('Server running at http://localhost:6004'));
+const port = process.env.PORT || 6004;
+
+app.listen(port, () => console.log(`Server running at http://localhost:${port}`));
