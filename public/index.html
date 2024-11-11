@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Division Calculator</title>
+    <script>
+        function calculate(e) {
+            e.preventDefault();
+            const data = new URLSearchParams(new FormData(e.target));
+            fetch('/calculate', { method: 'POST', body: data })
+                .then(response => response.json())
+                .then(data => document.getElementById('result').innerHTML = `<h2>Result: ${data.result}</h2>`);
+        }
+    </script>
+</head>
+<body>
+    <h1>Division Calculator</h1>
+    <form onsubmit="calculate(event)">
+        <input type="number" name="num1" placeholder="Number 1" required>
+        <input type="number" name="num2" placeholder="Number 2" required>
+        <button type="submit">Divide</button>
+    </form>
+    <div id="result"></div>
+</body>
+</html>
+
